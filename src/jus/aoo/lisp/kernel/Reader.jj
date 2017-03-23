@@ -40,6 +40,7 @@ MORE :
 <IN_SL_COMMENT> SPECIAL_TOKEN :{<SL_COMMENT: "\n" | "\r" | "\r\n"> : DEFAULT}
 <IN_ML_COMMENT> SPECIAL_TOKEN :{<ML_COMMENT: "*/" > : DEFAULT}
 <IN_SL_COMMENT,IN_ML_COMMENT> SKIP :{< ~[] >}// les lexèmes du langageTOKEN : {
+  //Definition des lexemes
   < #LETTRE : ["a"-"z"] | ["A"-"Z"] >
 | < #NOMBRE : ["0"-"9"] >
 | < PARG : "(" >
@@ -47,4 +48,21 @@ MORE :
 | < QUOTE : "'" >
 | < POINT : "." >
 | < ID : (< LETTRE >|< NOMBRE >)+ >
-}
+}
+//les règles de grammaire de ce langage
+Sexpr SEXPRESSIONS() :{ Sexpr s1;}{
+  (s1 = SEXPR() {s1.eval();})* < EOF >{return Symbole.newSymbole("fini");}
+}  Sexpr SEXPR() :{ Sexpr s1;}{
+	ATOME()
+|	< PARG > LISTE() < PARD > //() ou (SEXPR)
+| 	< QUOTE > SEXPR()
+
+}
+Sexpr LISTE() :{ Sexpr s1;}{
+  SEXPR()
+| { }
+}
+
+Sexpr ATOME() :{ Sexpr s1;}{
+  
+}
