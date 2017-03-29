@@ -12,8 +12,9 @@ protected static Reader parser = new Reader(in);
 /** lecture d'une S-EXPR au terminal
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
+ * @throws ParseException 
 */
-public static Sexpr read() throws LispException{
+public static Sexpr read() throws LispException, ParseException{
   parser.ReInit(in);
         return parser.SEXPR();
   }

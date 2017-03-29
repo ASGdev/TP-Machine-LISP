@@ -1,5 +1,5 @@
 package jus.aoo.lisp.kernel;
 
-public interface Liste implements Sexpr {
+public interface Liste extends Sexpr {
 
 }
