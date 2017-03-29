@@ -3,3 +3,5 @@
 /SimpleCharStream.java
 /Token.java
 /TokenMgrError.java
+/Reader.java
+/ReaderTokenManager.java
