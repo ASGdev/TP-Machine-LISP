@@ -1,0 +1,24 @@
+contexte -> couple (variable,valeur) -> utiliser une map de symboles
+public sexpr
+
+Paramètres formels et effectif
+
+Avoir une vue variable pour la sexpr (to string)
+
+exemple
+
+((lambda(a c)(cons a c)) 'x 'v)
+-> évaluation du foncteur ((lambda(a c)(cons a c))
+-> évaluation des arguments 'x 'v
+-> application
+
+Map : 
+| a | 1 |
+| b | 2 |
+| c | Y |
+| car | CAR |
+
+
+
+
+
