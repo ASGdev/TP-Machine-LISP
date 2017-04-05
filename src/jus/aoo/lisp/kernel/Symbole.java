@@ -5,9 +5,18 @@ import java.util.TreeMap;
 public class Symbole extends Atome {
 	
 	public static TreeMap<String, Symbole> symboles = new TreeMap<String, Symbole>();
-	public static Symbole symbole;
+	
+	public String sym;
+
 	public static Symbole newSymbole(String s) {
+		//regarde dans la treemap si le symbole existe deja
+		//le créé et l'insere
+		//ou le modifi ????
 		return null;
+	}
+	
+	private Symbole(String s ){
+		sym = s;
 	}
 	public Sexpr eval() {
 		return Context.get(this);
