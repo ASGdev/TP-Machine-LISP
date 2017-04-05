@@ -3,7 +3,7 @@ package jus.aoo.lisp.kernel;
 import java.io.*;
 
 public class Reader implements ReaderConstants {
-  public void main(String[] args) {
+  public void main(String[] args) throws LispException, ParseException {
     System.out.println(read());
   }
 /** le support de lecture */
@@ -22,8 +22,9 @@ public static Sexpr read() throws LispException, ParseException{
 * @param s : la chaîne
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
+ * @throws ParseException 
 */
-public static Sexpr read(String s) throws LispException{
+public static Sexpr read(String s) throws LispException, ParseException{
         java.io.Reader save = in;
         in = new StringReader(s);
         Sexpr r = read();
