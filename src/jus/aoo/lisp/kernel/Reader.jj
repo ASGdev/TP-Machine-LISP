@@ -1,27 +1,44 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
  */options{  static = true;}PARSER_BEGIN(Reader)package jus.aoo.lisp.kernel;
+import java.io.*;
 
 public class Reader {
+  public void main(String[] args) {
+    System.out.println(read());
+  }
 /** le support de lecture */
 protected static java.io.Reader in = new BufferedReader(new InputStreamReader(System.in));
+protected static Reader parser = new Reader(in);
 /** lecture d'une S-EXPR au terminal
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
 */
-public static Sexpr read() throws LispException{return null; }
+public static Sexpr read() throws LispException{
+  parser.ReInit(in);
+	return parser.SEXPR();
+  }
 /** lecture d'une S-EXPR à partir de la chaîne
 * @param s : la chaîne
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
 */
-public static Sexpr read(String s) throws LispException{ return null; }
+public static Sexpr read(String s) throws LispException{
+	java.io.Reader save = in;
+	in = new StringReader(s);
+	Sexpr r = read();
+	in = save;
+	return r;
+}
 /** évaluation de la séquence S-EXPRs à partir du fichier s
 * @param s : le nom du fichier
 * @return Sexpr : symbole du nom du fichier.
 * @throws LispException une erreur de lecture
 */
-public static Sexpr importe(String s) throws LispException{return null; }
+public static Sexpr importe(String s) throws LispException{
+	
+	
+  return null; }
 }PARSER_END(Reader)// les caractères ignorés
 SKIP :
 {
@@ -52,17 +69,21 @@ MORE :
 //les règles de grammaire de ce langage
 Sexpr SEXPRESSIONS() :{ Sexpr s1;}{
   (s1 = SEXPR() {s1.eval();})* < EOF >{return Symbole.newSymbole("fini");}
+  < EOF >
 }  Sexpr SEXPR() :{ Sexpr s1;}{
 	ATOME()
-|	< PARG > LISTE() < PARD > //() ou (SEXPR)
-| 	< QUOTE > SEXPR()
+|	< PARG > LISTE() < PARD > { return s1; }//() ou (SEXPR)
+| 	< QUOTE > SEXPR() { return quote(s1); }
 
 }
-Sexpr LISTE() :{ Sexpr s1;}{
-  SEXPR()
-| { }
+Sexpr LISTE() :{ Sexpr s1, s2;}{
+  s1 = SEXPR()(< POINT > s2 = SEXPR() | s2 = LISTE()) { return cons(s1,s2); }
+| {return Nil.getNil();}
 }
 
 Sexpr ATOME() :{ Sexpr s1;}{
-  
+  s1 = SYMBOLE() { return s1; }
+    
 }
+
+Sexpr SYMBOLE(): { Token t; } { t=< ID > { return Symbole.newSymbole(t.image); } }
