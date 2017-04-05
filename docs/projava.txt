@@ -1,0 +1,112 @@
+I:Sexpr
+/                      \
+atome               I:LIST
+/           |     \   / \  
+symbole primitive Nil   Scons
+
+
+
+
+
+
+I:_Reducer
+/                   \
+primitive         Reducer
+/          \             /    \
+subr       Fsubr       Expr   Fexpr
+/|\           \
+car cdr cons  cond
+
+
+
+Symbole :
+static Map<String;Symbole>
+static symbole
+new Symbole(string)
+
+Nil:
+static
+
+sexpr :
+Sexpr eval() : je considère cette sexpr comme un programme qu'on evalue et donne le resultat.
+cette eval va devoir etre concretisé dans toutes les classes qui doivent l'etre (symbole nil scons)
+boolean isX()
+car
+cdr
+
+eval symbole : valeur de la variable correspondant au symbole, si elle existe pas erreur.
+sinon 'a -> a cas general
+
+eval de nil : nil
+
+eval de scons : ex ((lamda (a c) (cons a c)) 'x 'y)
+		   -------------foncteur---   args
+(car '(abc)) jevalue car symbole on doit avoir car dans le contexte du coup sinon erreur ?
+
+dans la classe Car on aura eval car car herite de primitive et primitive de atome
+
+heritage multiple : faire une abstraction de _reducer et faire heriter reducer de _reducer on regle le probleme deheritage multiple par duplication.
+
+Classe : Context
+Un seul exemplaire, singleton.
+La classe n'aura que des méthodes static
+Map <Symbole, Sexpr>
+je veux la valeur associé a la variable machin dans le contexte
+public Sexpr get(Symbole) peut echouer si var n'existe pas dans programme.
+
+executer fct ?
+public void bind(Sexpr f, Sexpr e) (f arbre des param formels e arbre des param effectifs).
+
+Quand je termine l'execution, je dois remettre le contexte anterieur.
+public void unbind()
+
+methode supplementaire :
+public void define (Symbole,Sexpr) ajoute au contexte un couple variable valeur.
+
+Classe Reader :
+
+Pour que l'user puisse interagir ac le sys il tape au clav et le sys evalue et don le res de leval
+realisé en javacc
+sexprime uniquement en des termes qui sont des objet lisp donc Symbole Nil et Scons (les concretes).
+
+On peut ecrire un reader et verif que lecture et ecriture marche bien
+
+si on restitue q chose qui ressemble a lentrée ca sest bien passé.
+
+faire des methodes toString de partout car il affiche les tostring dans le debugger.
+
+-------------------
+
+Primitive de l'autre arbre c'est le meme que le premier arbre
+
+on saisis une sexpr au terminal, créé instance de sexpr
+on l'evalue, toute sexpr peut etre evaluable
+
+Classes concretes, toutes celles du bas arbre gauche
+
+Classes non concretes, les autres
+
+objets de ces instances definissent des manières d'evaluer des fonctions :
+donc 1 seule instance de Expr et Fexpr, car c'est des manières.
+Expr : 
+
+Fexpr :
+
+dans _reducer :
+Sexpr reduction(Sexpr fonction, Sexpr largs) fonction que l'on veut reduire , liste des arguments
+Sexpr apply (memes params) : appliquer une fct a une liste d'arguments
+
+concretiser ceci dans les classes finales.
+
+Il faut pas confondre eval et reduction. Si je demande (eval car) la fct eval fait l'eval de ce qu'il y a ici.
+comme l'argument car est un symbole je regarde dans le contecte et je trouve CAR)
+c'est donc comme si j'avais (eval car) CAR
+son eval va rendre elle même. car c'est une primitive.
+
+---------
+
+git pull
+
+git add .
+git commit -m "message"
+git push
