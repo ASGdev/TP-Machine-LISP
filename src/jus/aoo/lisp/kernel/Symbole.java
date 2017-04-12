@@ -12,6 +12,7 @@ public class Symbole extends Atome {
 		//regarde dans la treemap si le symbole existe deja
 		//le créé et l'insere
 		//ou le modifi ????
+		if()
 		return null;
 	}
 	
