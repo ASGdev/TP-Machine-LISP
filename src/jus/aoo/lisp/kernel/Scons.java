@@ -9,7 +9,7 @@ public class Scons implements Liste {
 	}
 	
 	public String toString() {
-	 return "scons";
+	 return car.toString() + " " + cdr.toString();
 	}
 	public Sexpr eval() {
 		return null;
