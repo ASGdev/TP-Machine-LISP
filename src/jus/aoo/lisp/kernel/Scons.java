@@ -15,4 +15,18 @@ public class Scons implements Liste {
 	public Sexpr eval() {
 		return null;
 	}
+
+
+	@Override
+	public Sexpr car() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Sexpr cdr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

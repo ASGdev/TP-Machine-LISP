@@ -41,4 +41,16 @@ public class Symbole extends Atome {
 	public String toString() {
 		return "Symbole";
 	}
+
+	@Override
+	public Sexpr car() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Sexpr cdr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

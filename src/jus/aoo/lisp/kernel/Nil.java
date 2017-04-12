@@ -16,4 +16,14 @@ public class Nil extends Atome implements Liste {
 	public static Nil getNil() {
 		return NIL;
 	}
+	@Override
+	public Sexpr car() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Sexpr cdr() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
