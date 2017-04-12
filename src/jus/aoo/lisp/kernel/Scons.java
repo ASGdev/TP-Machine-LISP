@@ -1,8 +1,11 @@
 package jus.aoo.lisp.kernel;
 
 public class Scons implements Liste {
-	public Scons() {
-		
+	Sexpr car;
+	Sexpr cdr;
+	public Scons(Sexpr s1, Sexpr s2) {
+		car = s1;
+		cdr = s2;
 	}
 	
 	public String toString() {
