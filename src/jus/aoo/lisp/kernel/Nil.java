@@ -1,7 +1,7 @@
 package jus.aoo.lisp.kernel;
 
 public class Nil extends Atome implements Liste {
-	public static Nil NIL;
+	public static Nil NIL= new Nil();
 	public Nil() {
 		
 	}

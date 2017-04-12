@@ -1,10 +1,10 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
- */options{  static = true;}PARSER_BEGIN(Reader)package jus.aoo.lisp.kernel;
+ */options{  static = false;}PARSER_BEGIN(Reader)package jus.aoo.lisp.kernel;
 import java.io.*;
 
 public class Reader {
-  public void main(String[] args) {
+  public static void main(String[] args) {
     try { 
     System.out.println(read());
   } catch(ParseException e) {
@@ -19,14 +19,16 @@ protected static Reader parser = new Reader(in);
 * @throws LispException une erreur de syntaxe
 */
 public static Sexpr read() throws LispException, ParseException{
-  try { 
-		Reader parser = new Reader(in);
+  try {
+
+    	parser.ReInit(in);
 		return parser.SEXPR();
+
+
 } catch(ParseException e) {
 		throw new LispException();
 }
-/*parser.ReInit(in);
-	return parser.SEXPR();*/
+
   }
 /** lecture d'une S-EXPR à partir de la chaîne
 * @param s : la chaîne
@@ -89,7 +91,7 @@ Sexpr SEXPRESSIONS() :{ Sexpr s1;}{
   (s1 = SEXPR() {s1.eval();})* < EOF >{return Symbole.newSymbole("fini");}
   < EOF >
 }  Sexpr SEXPR() :{ Sexpr s1;}{
-	s1 = ATOME()
+	s1 = ATOME() { return s1; }
 |	< PARG > s1 = LISTE() < PARD > { return s1; }//() ou (SEXPR)
 | 	< QUOTE > s1 = SEXPR() { return quote(s1); }
 
