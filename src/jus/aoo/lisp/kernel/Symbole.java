@@ -39,7 +39,7 @@ public class Symbole extends Atome {
 		
 	}
 	public String toString() {
-		return "Symbole";
+		return sym;
 	}
 
 	@Override

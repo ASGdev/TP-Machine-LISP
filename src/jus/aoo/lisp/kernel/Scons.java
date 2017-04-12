@@ -10,7 +10,7 @@ public class Scons implements Liste {
 	
 	
 	public String toString() {
-	 return car.toString() + " " + cdr.toString();
+	 return "("+ car.toString() + " " + cdr.toString() +")";
 	}
 	public Sexpr eval() {
 		return null;
