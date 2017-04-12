@@ -4,7 +4,11 @@ import java.io.*;
 
 public class Reader implements ReaderConstants {
   public void main(String[] args) {
+    try {
     System.out.println(read());
+  } catch(ParseException e) {
+                throw new LispException();
+}
   }
 /** le support de lecture */
 protected static java.io.Reader in = new BufferedReader(new InputStreamReader(System.in));
@@ -13,9 +17,15 @@ protected static Reader parser = new Reader(in);
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
 */
-public static Sexpr read() throws LispException{
-  parser.ReInit(in);
-        return parser.SEXPR();
+public static Sexpr read() throws LispException, ParseException{
+  try {
+                Reader parser = new Reader(in);
+                return parser.SEXPR();
+} catch(ParseException e) {
+                throw new LispException();
+}
+/*parser.ReInit(in);
+	return parser.SEXPR();*/
   }
 /** lecture d'une S-EXPR à partir de la chaîne
 * @param s : la chaîne
@@ -23,11 +33,15 @@ public static Sexpr read() throws LispException{
 * @throws LispException une erreur de syntaxe
 */
 public static Sexpr read(String s) throws LispException{
-        java.io.Reader save = in;
+        try {
+          java.io.Reader save = in;
         in = new StringReader(s);
         Sexpr r = read();
         in = save;
         return r;
+}catch(ParseException e) {
+                throw new LispException();
+}
 }
 /** évaluation de la séquence S-EXPRs à partir du fichier s
 * @param s : le nom du fichier
@@ -38,6 +52,9 @@ public static Sexpr importe(String s) throws LispException{
 
 
   return null; }
+  protected static Sexpr quote(Sexpr s1) {
+    return new Scons(Symbole.newSymbole("quote"),s1);
+  }
 
 //les règles de grammaire de ce langage
   static final public Sexpr SEXPRESSIONS() throws ParseException {
@@ -67,18 +84,18 @@ public static Sexpr importe(String s) throws LispException{
                  Sexpr s1;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case ID:
-      ATOME();
+      s1 = ATOME();
       break;
     case PARG:
       jj_consume_token(PARG);
-      LISTE();
+      s1 = LISTE();
       jj_consume_token(PARD);
-                                    {if (true) return s1;}
+                                         {if (true) return s1;}
       break;
     case QUOTE:
       jj_consume_token(QUOTE);
-      SEXPR();
-                            {if (true) return quote(s1);}
+      s1 = SEXPR();
+                                 {if (true) return quote(s1);}
       break;
     default:
       jj_la1[1] = jj_gen;
@@ -104,7 +121,7 @@ public static Sexpr importe(String s) throws LispException{
         jj_la1[2] = jj_gen;
         s2 = LISTE();
       }
-                                                        {if (true) return cons(s1,s2);}
+                                                        {if (true) return new Scons(s1,s2);}
       break;
     default:
       jj_la1[3] = jj_gen;
