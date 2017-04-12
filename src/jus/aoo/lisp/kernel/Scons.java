@@ -8,6 +8,7 @@ public class Scons implements Liste {
 		cdr = s2;
 	}
 	
+	
 	public String toString() {
 	 return car.toString() + " " + cdr.toString();
 	}
