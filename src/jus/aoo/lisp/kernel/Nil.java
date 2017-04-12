@@ -6,7 +6,7 @@ public class Nil extends Atome implements Liste {
 		
 	}
 	public String toString() {
-		return "Nil";
+		return "()";
 	}
 	
 	public Sexpr eval() {
