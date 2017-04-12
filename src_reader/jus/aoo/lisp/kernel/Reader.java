@@ -3,7 +3,7 @@ package jus.aoo.lisp.kernel;
 import java.io.*;
 
 public class Reader implements ReaderConstants {
-  public void main(String[] args) throws LispException, ParseException {
+  public void main(String[] args) {
     System.out.println(read());
   }
 /** le support de lecture */
@@ -12,9 +12,8 @@ protected static Reader parser = new Reader(in);
 /** lecture d'une S-EXPR au terminal
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
- * @throws ParseException 
 */
-public static Sexpr read() throws LispException, ParseException{
+public static Sexpr read() throws LispException{
   parser.ReInit(in);
         return parser.SEXPR();
   }
@@ -22,9 +21,8 @@ public static Sexpr read() throws LispException, ParseException{
 * @param s : la chaîne
 * @return Sexpr : la Sexpr construite.
 * @throws LispException une erreur de syntaxe
- * @throws ParseException 
 */
-public static Sexpr read(String s) throws LispException, ParseException{
+public static Sexpr read(String s) throws LispException{
         java.io.Reader save = in;
         in = new StringReader(s);
         Sexpr r = read();
@@ -110,7 +108,7 @@ public static Sexpr importe(String s) throws LispException{
       break;
     default:
       jj_la1[3] = jj_gen;
-   {if (true) return Nil.getNil();}
+   {if (true) return Nil.NIL;}
     }
     throw new Error("Missing return statement in function");
   }
