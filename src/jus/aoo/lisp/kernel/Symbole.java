@@ -12,16 +12,25 @@ public class Symbole extends Atome {
 		//regarde dans la treemap si le symbole existe deja
 		//le créé et l'insere
 		//ou le modifi ????
-		if(symboles.get(s) == NULL){
+		if(symboles.get(s) == null){
 			// add or replace old value
-			symboles.put(s, Symbole(s));
-			return Symbole(s);
+			Symbole symbole = new Symbole(s);
+			symboles.put(s, symbole);
+			return symbole;
 		} else {
 			return null;
 		}
 		
 	}
 	
+	public String getSym() {
+		return sym;
+	}
+
+	public void setSym(String sym) {
+		this.sym = sym;
+	}
+
 	private Symbole(String s ){
 		sym = s;
 	}
