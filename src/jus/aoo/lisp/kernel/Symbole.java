@@ -12,8 +12,14 @@ public class Symbole extends Atome {
 		//regarde dans la treemap si le symbole existe deja
 		//le créé et l'insere
 		//ou le modifi ????
-		if()
-		return null;
+		if(symboles.get(s) == NULL){
+			// add or replace old value
+			symboles.put(s, Symbole(s));
+			return Symbole(s);
+		} else {
+			return null;
+		}
+		
 	}
 	
 	private Symbole(String s ){
