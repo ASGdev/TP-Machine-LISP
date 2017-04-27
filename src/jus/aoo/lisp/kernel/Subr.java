@@ -2,7 +2,13 @@ package jus.aoo.lisp.kernel;
 
 public abstract class Subr extends Primitive {
 
-	public Subr car(){
+	//public static Subr subr = new Subr();
+	
+	private Subr() {
+		
+	}
+	
+/*	public Subr car(){
 		return null;
 	}
 	
@@ -10,5 +16,5 @@ public abstract class Subr extends Primitive {
 		return null;
 	}
 	
-	
+	*/
 }

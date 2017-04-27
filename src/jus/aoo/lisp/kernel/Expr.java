@@ -9,6 +9,6 @@ public class Expr extends Reducer{
 	@Override
 	protected Sexpr evalArgs(Sexpr args) {
 		// TODO Auto-generated method stub
-		return args;
+		return args.eval();
 	}
 }

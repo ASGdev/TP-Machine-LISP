@@ -8,6 +8,7 @@ public abstract class Reducer implements _Reducer {
 		return apply(fct, evalArgs(argList));
 	}
 	protected abstract Sexpr evalArgs(Sexpr args);
+	
 	@Override
 	public Sexpr apply(Sexpr fct, Sexpr argList) {
 		try {
