@@ -4,9 +4,7 @@ public abstract class Subr extends Primitive {
 
 	//public static Subr subr = new Subr();
 	
-	private Subr() {
-		
-	}
+
 	
 /*	public Subr car(){
 		return null;
