@@ -5,8 +5,11 @@ import java.io.*;
 
 public class Reader {
   public static void main(String[] args) {
-    try { 
+    try {
+      while(true) {
+        
     System.out.println(read());
+  }
   } catch(ParseException e) {
 		throw new LispException();
 }
@@ -56,7 +59,7 @@ public static Sexpr importe(String s) throws LispException{
 	
   return null; }
   protected static Sexpr quote(Sexpr s1) {
-    return new Scons(Symbole.newSymbole("quote"),s1);
+    return new Scons(Symbole.newSymbole("quote"),new Scons(s1,Nil.NIL));
   }
     
 }PARSER_END(Reader)// les caractères ignorés

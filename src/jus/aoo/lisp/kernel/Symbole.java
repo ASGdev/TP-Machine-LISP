@@ -18,7 +18,7 @@ public class Symbole extends Atome {
 			symboles.put(s, symbole);
 			return symbole;
 		} else {
-			return null;
+			return symboles.get(s);
 		}
 		
 	}
@@ -40,17 +40,5 @@ public class Symbole extends Atome {
 	}
 	public String toString() {
 		return sym;
-	}
-
-	@Override
-	public Sexpr car() {
-		// TODO Auto-generated method stub
-		return this;
-	}
-
-	@Override
-	public Sexpr cdr() {
-		// TODO Auto-generated method stub
-		return Nil.NIL;
 	}
 }

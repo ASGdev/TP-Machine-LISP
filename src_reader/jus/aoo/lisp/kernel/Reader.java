@@ -5,7 +5,10 @@ import java.io.*;
 public class Reader implements ReaderConstants {
   public static void main(String[] args) {
     try {
+      while(true) {
+
     System.out.println(read());
+  }
   } catch(ParseException e) {
                 throw new LispException();
 }
@@ -55,7 +58,7 @@ public static Sexpr importe(String s) throws LispException{
 
   return null; }
   protected static Sexpr quote(Sexpr s1) {
-    return new Scons(Symbole.newSymbole("quote"),s1);
+    return new Scons(Symbole.newSymbole("quote"),new Scons(s1,Nil.NIL));
   }
 
 //les règles de grammaire de ce langage

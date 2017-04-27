@@ -15,16 +15,14 @@ public class Scons implements Liste {
 	}
 	
 	public String toString(Sexpr s) {
-		if(s == Nil.NIL) {
-			return "";
+		if(s.cdr() instanceof  Nil) {return s.car().toString();}
+		if (s.cdr() instanceof Atome) {
+			return s.car().toString() + " . " + s.cdr().toString();
 		}
-		if (s.cdr()!=Nil.NIL) {
+		
 			 return  s.car().toString() + " " + toString(s.cdr());
 
-		} else {
-			 return  s.car().toString();
 
-		}
 		}
 
 	
