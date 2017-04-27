@@ -45,12 +45,12 @@ public class Symbole extends Atome {
 	@Override
 	public Sexpr car() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Sexpr cdr() {
 		// TODO Auto-generated method stub
-		return null;
+		return Nil.NIL;
 	}
 }

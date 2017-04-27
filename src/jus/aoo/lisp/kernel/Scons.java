@@ -10,6 +10,7 @@ public class Scons implements Liste {
 	
 	
 	public String toString() {
+
 	 return "("+ toString(this) +")";
 	}
 	

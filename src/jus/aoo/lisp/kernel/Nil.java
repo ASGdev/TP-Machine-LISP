@@ -19,11 +19,11 @@ public class Nil extends Atome implements Liste {
 	@Override
 	public Sexpr car() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 	@Override
 	public Sexpr cdr() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 }
