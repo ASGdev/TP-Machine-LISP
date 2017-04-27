@@ -10,7 +10,7 @@ public class Nil extends Atome implements Liste {
 	}
 	
 	public Sexpr eval() {
-		return null;
+		return this;
 	}
 	
 	public static Nil getNil() {

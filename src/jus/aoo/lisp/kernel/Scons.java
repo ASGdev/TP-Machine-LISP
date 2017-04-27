@@ -27,7 +27,13 @@ public class Scons implements Liste {
 
 	
 	public Sexpr eval() {
-		return null;
+		Sexpr fct = car().eval();
+		if (fct instanceof Primitive) {return ((_Reducer) fct).reduction(fct, cdr);}
+		if (fct instanceof Atome) { throw new LispException("fonction incorrecte");}
+		if (fct.car()==Symbole.newSymbole("lambda")) {return Expr.expr.reduction(fct, cdr);}
+		if (fct.car()==Symbole.newSymbole("flambda")) {return Fexpr.fexpr.reduction(fct, cdr);}
+		throw new LispException("eval impossible");
+
 	}
 
 

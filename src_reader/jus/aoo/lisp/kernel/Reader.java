@@ -6,8 +6,11 @@ public class Reader implements ReaderConstants {
   public static void main(String[] args) {
     try {
       while(true) {
+        Sexpr s = read();
+        System.out.println("evaluation de : "+s);
+        s = s.eval();
+        System.out.println(s);
 
-    System.out.println(read());
   }
   } catch(ParseException e) {
                 throw new LispException();

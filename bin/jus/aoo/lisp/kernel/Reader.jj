@@ -7,8 +7,11 @@ public class Reader {
   public static void main(String[] args) {
     try {
       while(true) {
-        
-    System.out.println(read());
+        Sexpr s = read();
+        System.out.println("evaluation de : "+s);
+    	s = s.eval();
+        System.out.println(s);
+    	
   }
   } catch(ParseException e) {
 		throw new LispException();
