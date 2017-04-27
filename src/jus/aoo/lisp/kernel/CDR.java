@@ -2,14 +2,13 @@ package jus.aoo.lisp.kernel;
 
 public class CDR extends Subr{
 
-	public CDR() {
-		// TODO Auto-generated constructor stub
+	public static CDR cdr = new CDR();
+	
+	@Override
+	public Sexpr apply(Sexpr fct, Sexpr argList) {
+		
+		return argList.cdr();
 	}
 
-	@Override
-	protected Sexpr evalArgs(Sexpr args) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

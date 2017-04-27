@@ -35,7 +35,12 @@ public class Symbole extends Atome {
 		sym = s;
 	}
 	public Sexpr eval() {
-		return Context.get(this);
+		Sexpr s = Context.get(this);
+		if (s==null) {
+			throw new LispException("L'évaluation n'est pas possible, symbole non associé à quelque chose.");
+		} else {
+			return s;
+		}
 		
 	}
 	public String toString() {

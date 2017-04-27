@@ -14,6 +14,10 @@ public abstract class Atome implements Sexpr {
 		return null;
 	}
 
+	public boolean equals(Sexpr s) {
+		return s == this;
+	}
+
 @Override
 public Sexpr car() {
 	// TODO Auto-generated method stub
@@ -24,5 +28,19 @@ public Sexpr car() {
 public Sexpr cdr() {
 	// TODO Auto-generated method stub
 	throw new LispException("Cdr non applicable à un atome");
+}
+
+public boolean isPrimitive() {
+	return false;
+}
+
+public boolean isAtome() {
+	return true;
+}
+
+@Override
+public boolean isNil() {
+	// TODO Auto-generated method stub
+	return false;
 }
 }

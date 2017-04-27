@@ -26,4 +26,9 @@ public class Nil extends Atome implements Liste {
 		// TODO Auto-generated method stub
 		return this;
 	}
+	@Override
+	public boolean isNil() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

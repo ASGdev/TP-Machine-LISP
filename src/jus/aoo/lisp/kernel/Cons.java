@@ -2,10 +2,13 @@ package jus.aoo.lisp.kernel;
 
 public class Cons extends Subr {
 
-	@Override
-	protected Sexpr evalArgs(Sexpr args) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public static Cons cons = new Cons();
 
+
+	
+	@Override
+	public Sexpr apply(Sexpr fct, Sexpr argList) {
+		
+		return new Scons(argList.car(), argList.cdr().car());
+	}
 }

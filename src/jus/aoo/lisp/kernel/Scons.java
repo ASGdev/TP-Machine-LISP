@@ -25,14 +25,24 @@ public class Scons implements Liste {
 
 		}
 
+	public boolean equals(Sexpr s) {
+		return s == this;
+	}
+
 	
 	public Sexpr eval() {
-		Sexpr fct = car().eval();
-		if (fct instanceof Primitive) {return ((_Reducer) fct).reduction(fct, cdr);}
-		if (fct instanceof Atome) { throw new LispException("fonction incorrecte");}
-		if (fct.car()==Symbole.newSymbole("lambda")) {return Expr.expr.reduction(fct, cdr);}
-		if (fct.car()==Symbole.newSymbole("flambda")) {return Fexpr.fexpr.reduction(fct, cdr);}
-		throw new LispException("eval impossible");
+		//try {
+			Sexpr fct = car().eval();
+			if (fct.isPrimitive()) {return ((_Reducer) fct).reduction(fct, cdr);}
+			if (fct.isAtome()) { throw new LispException("fonction incorrecte");}
+			if (fct.car().equals(Symbole.newSymbole("lambda"))) {return Expr.expr.reduction(fct, cdr);}
+			if (fct.car().equals(Symbole.newSymbole("flambda"))) {return Fexpr.fexpr.reduction(fct, cdr);}
+			throw new LispException("eval impossible");
+
+	//	} catch (LispException e) {
+		//	System.out.println(e.getMessage());
+		//}
+	//	return this;
 
 	}
 
@@ -48,5 +58,26 @@ public class Scons implements Liste {
 	public Sexpr cdr() {
 		// TODO Auto-generated method stub
 		return cdr;
+	}
+
+
+	@Override
+	public boolean isPrimitive() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isAtome() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean isNil() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

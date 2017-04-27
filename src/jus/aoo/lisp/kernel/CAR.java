@@ -1,11 +1,17 @@
 package jus.aoo.lisp.kernel;
 
 public class CAR extends Subr {
+	
+	
+	public static CAR car = new CAR();
 
 	@Override
-	protected Sexpr evalArgs(Sexpr args) {
-		// TODO Auto-generated method stub
-		return null;
+	public Sexpr apply(Sexpr fct, Sexpr argList) {
+		
+		return argList.car();
 	}
+
+
+
 
 }

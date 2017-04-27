@@ -3,19 +3,44 @@ package jus.aoo.lisp.kernel;
 import java.io.*;
 
 public class Reader implements ReaderConstants {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws LispException, ParseException{
+
     try {
-      while(true) {
-        Sexpr s = read();
+                        Reader.importe("boot.ll");
+                } catch (LispException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }       while (true) {
+                System.out.print(" >");
+                Sexpr s = read();
         System.out.println("evaluation de : "+s);
+
+        try {
         s = s.eval();
+        } catch (LispException e) {
+                        System.out.println(e.getMessage());
+                }
         System.out.println(s);
 
+                }
+
+    /*try {
+      Reader.importe("boot.ll");
+      while(true) {
+        System.out.print(" >");
+        Sexpr s = read();
+        System.out.println("evaluation de : "+s);
+    	s = s.eval();
+        System.out.println(s);
+    	
   }
   } catch(ParseException e) {
-                throw new LispException();
+		throw new LispException();
+}*/
 }
-  }
 /** le support de lecture */
 protected static java.io.Reader in = new BufferedReader(new InputStreamReader(System.in));
 protected static Reader parser = new Reader(in);
@@ -56,17 +81,27 @@ public static Sexpr read(String s) throws LispException{
 * @return Sexpr : symbole du nom du fichier.
 * @throws LispException une erreur de lecture
 */
-public static Sexpr importe(String s) throws LispException{
-
-
-  return null; }
+public static Sexpr importe(String s) throws LispException,FileNotFoundException{
+  parser.ReInit(new FileInputStream(s));
+  try {  parser.SEXPRESSIONS(); }
+  catch ( ParseException e) {
+        throw new LispException(e);
+    }
+    return Symbole.newSymbole(s);
+}
   protected static Sexpr quote(Sexpr s1) {
     return new Scons(Symbole.newSymbole("quote"),new Scons(s1,Nil.NIL));
   }
 
+private Sexpr quote(Sexpr s1,Sexpr s2) { return new Scons(s1,s2); }
+
 //les règles de grammaire de ce langage
-  final public Sexpr SEXPRESSIONS() throws ParseException {
-                        Sexpr s1;
+/*Sexpr SEXPRESSIONS() :{ Sexpr s1;}{
+  (s1 = SEXPR() {s1.eval();})* < EOF >{return Symbole.newSymbole("fini");}
+  < EOF >
+}*/
+  final public void SEXPRESSIONS() throws ParseException {
+                       Sexpr s1;
     label_1:
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -80,12 +115,10 @@ public static Sexpr importe(String s) throws LispException{
         break label_1;
       }
       s1 = SEXPR();
-                 s1.eval();
+                    s1.eval();
     }
     jj_consume_token(0);
-                                       {if (true) return Symbole.newSymbole("fini");}
-    jj_consume_token(0);
-    throw new Error("Missing return statement in function");
+
   }
 
   final public Sexpr SEXPR() throws ParseException {
