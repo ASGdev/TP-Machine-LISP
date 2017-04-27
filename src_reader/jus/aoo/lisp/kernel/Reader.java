@@ -55,7 +55,7 @@ public static Sexpr importe(String s) throws LispException{
 
   return null; }
   protected static Sexpr quote(Sexpr s1) {
-    return new Scons(Symbole.newSymbole("quote"),s1);
+    return new Scons(Symbole.newSymbole(""),s1);
   }
 
 //les règles de grammaire de ce langage

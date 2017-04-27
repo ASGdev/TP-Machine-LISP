@@ -10,8 +10,23 @@ public class Scons implements Liste {
 	
 	
 	public String toString() {
-	 return "("+ car.toString() + " . " + cdr.toString() +")";
+	 return "("+ toString(this) +")";
 	}
+	
+	public String toString(Sexpr s) {
+		if(s == Nil.NIL) {
+			return "";
+		}
+		if (s.cdr()!=Nil.NIL) {
+			 return  s.car().toString() + " " + toString(s.cdr());
+
+		} else {
+			 return  s.car().toString();
+
+		}
+		}
+
+	
 	public Sexpr eval() {
 		return null;
 	}
@@ -20,13 +35,13 @@ public class Scons implements Liste {
 	@Override
 	public Sexpr car() {
 		// TODO Auto-generated method stub
-		return null;
+		return car;
 	}
 
 
 	@Override
 	public Sexpr cdr() {
 		// TODO Auto-generated method stub
-		return null;
+		return cdr;
 	}
 }
