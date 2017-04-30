@@ -18,6 +18,7 @@ public class Context {
 		Symbole ato = Symbole.newSymbole("atom"); define(ato, Atom.atom);
 		Symbole EQ = Symbole.newSymbole("eq"); define(EQ,Eq.eq);
 		Symbole EXP = Symbole.newSymbole("explode"); define(EXP,Explode.exp);
+		Symbole IMP = Symbole.newSymbole("implode"); define(IMP,Implode.imp);
 		Symbole de = Symbole.newSymbole("de"); define(de,De.DE);
 		Symbole df = Symbole.newSymbole("df"); define(df,Df.DF);
 		Symbole load = Symbole.newSymbole("load"); define(load,Load.LOAD);
