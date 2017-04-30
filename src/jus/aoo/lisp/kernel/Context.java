@@ -20,6 +20,7 @@ public class Context {
 		Symbole EXP = Symbole.newSymbole("explode"); define(EXP,Explode.exp);
 		Symbole IMP = Symbole.newSymbole("implode"); define(IMP,Implode.imp);
 		Symbole PNT = Symbole.newSymbole("print"); define(PNT,Print.pnt);
+		Symbole SET = Symbole.newSymbole("set"); define (SET,Set.set);
 		Symbole de = Symbole.newSymbole("de"); define(de,De.DE);
 		Symbole df = Symbole.newSymbole("df"); define(df,Df.DF);
 		Symbole load = Symbole.newSymbole("load"); define(load,Load.LOAD);
