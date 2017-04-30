@@ -4,44 +4,7 @@
 import java.io.*;
 
 public class Reader {
-  public static void main(String[] args) throws LispException, ParseException{
 
-    try {
-			Reader.importe("boot.ll");
-		} catch (LispException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	while (true) {
-		System.out.print(" >");
-		Sexpr s = read();
-        System.out.println("evaluation de : "+s);
-
-        try {
-    	s = s.eval();
-    	} catch (LispException e) {
-			System.out.println(e.getMessage());
-		}
-        System.out.println(s);
-    	
-		}
-	
-    /*try {
-      Reader.importe("boot.ll");
-      while(true) {
-        System.out.print(" >");
-        Sexpr s = read();
-        System.out.println("evaluation de : "+s);
-    	s = s.eval();
-        System.out.println(s);
-    	
-  }
-  } catch(ParseException e) {
-		throw new LispException();
-}*/
-}
 /** le support de lecture */
 protected static java.io.Reader in = new BufferedReader(new InputStreamReader(System.in));
 protected static Reader parser = new Reader(in);
