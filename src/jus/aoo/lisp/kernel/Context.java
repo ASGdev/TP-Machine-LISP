@@ -17,6 +17,7 @@ public class Context {
 		Symbole cns = Symbole.newSymbole("cons"); define(cns, Cons.cons);
 		Symbole ato = Symbole.newSymbole("atom"); define(ato, Atom.atom);
 		Symbole EQ = Symbole.newSymbole("eq"); define(EQ,Eq.eq);
+		Symbole EXP = Symbole.newSymbole("explode"); define(EXP,Explode.exp);
 		Symbole de = Symbole.newSymbole("de"); define(de,De.DE);
 		Symbole df = Symbole.newSymbole("df"); define(df,Df.DF);
 		Symbole load = Symbole.newSymbole("load"); define(load,Load.LOAD);
