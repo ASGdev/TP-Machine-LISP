@@ -21,6 +21,7 @@ public class Context {
 		Symbole IMP = Symbole.newSymbole("implode"); define(IMP,Implode.imp);
 		Symbole PNT = Symbole.newSymbole("print"); define(PNT,Print.pnt);
 		Symbole SET = Symbole.newSymbole("set"); define (SET,Set.set);
+		Symbole TFN = Symbole.newSymbole("typefn"); define(TFN,Typefn.tfn);
 		Symbole de = Symbole.newSymbole("de"); define(de,De.DE);
 		Symbole df = Symbole.newSymbole("df"); define(df,Df.DF);
 		Symbole load = Symbole.newSymbole("load"); define(load,Load.LOAD);
@@ -31,6 +32,12 @@ public class Context {
 
 	}
 	
+	public static Map<Symbole, Sexpr> getContexte() {
+		return contexte;
+	}
+	public static void setContexte(Map<Symbole, Sexpr> contexte) {
+		Context.contexte = contexte;
+	}
 	private Context(){
 		
 	}

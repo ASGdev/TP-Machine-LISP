@@ -37,12 +37,15 @@ public class Symbole extends Atome {
 		sym = s;
 	}
 	public Sexpr eval() {
-		Sexpr s = Context.get(this);
-		if (s==null) {
-			throw new LispException("L'évaluation n'est pas possible, si vous vouliez évaluer un symbole non connu, ajouter une quote devant ce symbole ou définissez le.");
-		} else {
-			return s;
-		}
+
+			Sexpr s = Context.get(this);
+			if (s==null) {
+				throw new LispException("L'évaluation n'est pas possible, si vous vouliez évaluer un symbole non connu, ajouter une quote devant ce symbole ou définissez le.");
+			} else {
+				return s;
+			}
+		
+
 		
 	}
 	public String toString() {
