@@ -10,12 +10,12 @@ public class Context {
 	private static Stack<Map<Symbole, Sexpr>> locales = new Stack<Map<Symbole,Sexpr>>();
 	static {
 		Symbole t = Symbole.newSymbole("t"); define(t,t);
-		Symbole j = Symbole.newSymbole("j"); define(j,j);
 
 		Symbole nil = Symbole.newSymbole("nil"); define(nil,Nil.NIL);
 		Symbole car = Symbole.newSymbole("car"); define(car,CAR.car);
 		Symbole cdr = Symbole.newSymbole("cdr"); define(cdr,CDR.cdr);
 		Symbole cns = Symbole.newSymbole("cons"); define(cns, Cons.cons);
+		Symbole ato = Symbole.newSymbole("atom"); define(ato, Atom.atom);
 		Symbole de = Symbole.newSymbole("de"); define(de,De.DE);
 		Symbole df = Symbole.newSymbole("df"); define(df,Df.DF);
 		Symbole load = Symbole.newSymbole("load"); define(load,Load.LOAD);
