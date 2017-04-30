@@ -7,7 +7,7 @@ public class CDR extends Subr{
 	@Override
 	public Sexpr apply(Sexpr fct, Sexpr argList) {
 		
-		return argList.cdr();
+		return argList.car().cdr();
 	}
 
 

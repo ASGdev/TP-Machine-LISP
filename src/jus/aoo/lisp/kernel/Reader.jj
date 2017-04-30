@@ -94,7 +94,7 @@ public static Sexpr importe(String s) throws LispException,FileNotFoundException
     return new Scons(Symbole.newSymbole("quote"),new Scons(s1,Nil.NIL));
   }
 
-private Sexpr quote(Sexpr s1,Sexpr s2) { return new Scons(s1,s2); }
+protected static Sexpr quote(Sexpr s1,Sexpr s2) { return new Scons(s1,s2); }
   
     
 }PARSER_END(Reader)// les caractères ignorés

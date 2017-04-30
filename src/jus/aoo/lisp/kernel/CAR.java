@@ -8,7 +8,7 @@ public class CAR extends Subr {
 	@Override
 	public Sexpr apply(Sexpr fct, Sexpr argList) {
 		
-		return argList.car();
+		return argList.car().car();
 	}
 
 

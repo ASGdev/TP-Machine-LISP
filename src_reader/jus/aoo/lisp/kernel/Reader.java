@@ -93,7 +93,7 @@ public static Sexpr importe(String s) throws LispException,FileNotFoundException
     return new Scons(Symbole.newSymbole("quote"),new Scons(s1,Nil.NIL));
   }
 
-private Sexpr quote(Sexpr s1,Sexpr s2) { return new Scons(s1,s2); }
+protected static Sexpr quote(Sexpr s1,Sexpr s2) { return new Scons(s1,s2); }
 
 //les règles de grammaire de ce langage
 /*Sexpr SEXPRESSIONS() :{ Sexpr s1;}{
