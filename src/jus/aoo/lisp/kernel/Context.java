@@ -15,6 +15,7 @@ public class Context {
 		Symbole nil = Symbole.newSymbole("nil"); define(nil,Nil.NIL);
 		Symbole car = Symbole.newSymbole("car"); define(car,CAR.car);
 		Symbole cdr = Symbole.newSymbole("cdr"); define(cdr,CDR.cdr);
+		Symbole cns = Symbole.newSymbole("cons"); define(cns, Cons.cons);
 		Symbole de = Symbole.newSymbole("de"); define(de,De.DE);
 		Symbole df = Symbole.newSymbole("df"); define(df,Df.DF);
 		Symbole load = Symbole.newSymbole("load"); define(load,Load.LOAD);
