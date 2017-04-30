@@ -26,7 +26,9 @@ public class Scons implements Liste {
 		}
 
 	public boolean equals(Sexpr s) {
-		return s == this;
+		String s1 = this.toString();
+		String s2 = this.toString();
+		return(s1.equals(s2));
 	}
 
 	

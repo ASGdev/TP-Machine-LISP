@@ -1,6 +1,6 @@
 package jus.aoo.lisp.kernel;
 
-public class Atom extends Fsubr {
+public class Atom extends Subr {
 	
 	public static Atom atom = new Atom();
 

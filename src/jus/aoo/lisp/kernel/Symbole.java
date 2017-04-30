@@ -26,6 +26,8 @@ public class Symbole extends Atome {
 	public String getSym() {
 		return sym;
 	}
+	
+
 
 	public void setSym(String sym) {
 		this.sym = sym;
@@ -37,7 +39,7 @@ public class Symbole extends Atome {
 	public Sexpr eval() {
 		Sexpr s = Context.get(this);
 		if (s==null) {
-			throw new LispException("L'évaluation n'est pas possible, symbole non associé à quelque chose.");
+			throw new LispException("L'évaluation n'est pas possible, si vous vouliez évaluer un symbole non connu, ajouter une quote devant ce symbole ou définissez le.");
 		} else {
 			return s;
 		}
